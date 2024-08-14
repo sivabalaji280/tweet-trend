@@ -16,25 +16,6 @@ stages:
         displayName: "Build"
         steps:
           
-          - checkout: self
-            fetchDepth: 0
-          - task: JavaToolInstaller@0
-            inputs:
-              versionSpec: '8'
-              jdkArchitectureOption: 'x64'
-              jdkSourceOption: 'PreInstalled'
-          - task: SonarCloudPrepare@2
-            inputs:
-              SonarCloud: 'mysonarcloud'
-              organization: 'mysonarcloud280'
-              scannerMode: 'Other'
-              extraProperties: |
-                # Additional properties that will be passed to the scanner,
-                # Put one key=value per line, example:
-                # sonar.exclusions=**/*.bin
-                sonar.projectKey=sivabalaji280_tweettrend
-                sonar.projectName=tweettrend
-          
           - task: Maven@4
             inputs:
               mavenPomFile: 'pom.xml'
@@ -48,8 +29,7 @@ stages:
               sonarQubeRunAnalysis: true
               sqMavenPluginVersionChoice: 'latest'
           - task: SonarCloudAnalyze@2
-            inputs:
-              jdkversion: 'JAVA_HOME_17_X64'
+     
          
           
 
