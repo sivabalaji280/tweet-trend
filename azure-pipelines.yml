@@ -25,8 +25,12 @@ stages:
               mavenVersionOption: 'Default'
               mavenAuthenticateFeed: false
               effectivePomSkip: false
-              sonarQubeRunAnalysis: true
-              sqMavenPluginVersionChoice: 'latest'
+              sonarQubeRunAnalysis: false
+          - task: SonarCloudPrepare@2
+            inputs:
+              SonarCloud: 'mysonarcloud'
+              organization: 'mysonarcloud280'
+              scannerMode: 'Other'
 
         
            
