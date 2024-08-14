@@ -15,17 +15,8 @@ stages:
       - job: 
         displayName: "Build"
         steps:
-          - task: Maven@4
-            inputs:
-              mavenPomFile: 'pom.xml'
-              goals: 'clean deploy'
-              publishJUnitResults: true
-              testResultsFiles: '**/surefire-reports/TEST-*.xml'
-              javaHomeOption: 'JDKVersion'
-              mavenVersionOption: 'Default'
-              mavenAuthenticateFeed: false
-              effectivePomSkip: false
-              sonarQubeRunAnalysis: false
+          
+          
           - task: SonarCloudPrepare@2
             inputs:
               SonarCloud: 'mysonarcloud'
@@ -37,6 +28,17 @@ stages:
                 # sonar.exclusions=**/*.bin
                 sonar.projectKey=sivabalaji280_tweettrend
                 sonar.projectName=tweettrend
+          - task: Maven@4
+            inputs:
+              mavenPomFile: 'pom.xml'
+              goals: 'clean deploy'
+              publishJUnitResults: true
+              testResultsFiles: '**/surefire-reports/TEST-*.xml'
+              javaHomeOption: 'JDKVersion'
+              mavenVersionOption: 'Default'
+              mavenAuthenticateFeed: false
+              effectivePomSkip: false
+              sonarQubeRunAnalysis: false
           - task: SonarCloudPublish@2
             inputs:
               pollingTimeoutSec: '300'
