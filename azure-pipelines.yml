@@ -35,7 +35,7 @@ stages:
           - task: Docker@2
             inputs:
               containerRegistry: 'docker'
-              repository: 'tweettrend'
+              repository: 'balaji36490/tweettrend'
               command: 'buildAndPush'
               Dockerfile: '**/Dockerfile'
 
