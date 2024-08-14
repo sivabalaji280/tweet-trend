@@ -29,11 +29,7 @@ stages:
                 # sonar.exclusions=**/*.bin
                 sonar.projectKey=sivabalaji280_tweettrend
                 sonar.projectName=tweettrend
-          - task: JavaToolInstaller@0
-            inputs:
-              versionSpec: '11'
-              jdkArchitectureOption: 'x64'
-              jdkSourceOption: 'PreInstalled'
+          
           - task: Maven@4
             inputs:
               mavenPomFile: 'pom.xml'
@@ -44,13 +40,12 @@ stages:
               mavenVersionOption: 'Default'
               mavenAuthenticateFeed: false
               effectivePomSkip: false
-              sonarQubeRunAnalysis: false
+              sonarQubeRunAnalysis: true
+              sqMavenPluginVersionChoice: 'latest'
           - task: SonarCloudAnalyze@2
             inputs:
               jdkversion: 'JAVA_HOME_17_X64'
-          - task: SonarCloudPublish@2
-            inputs:
-              pollingTimeoutSec: '300'
+         
           
 
         
