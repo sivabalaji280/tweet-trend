@@ -27,7 +27,18 @@ stages:
               mavenAuthenticateFeed: false
               effectivePomSkip: false
               sonarQubeRunAnalysis: false
+
+          - task: DockerInstaller@0
+            inputs:
+              dockerVersion: '17.09.0-ce'
           
+          - task: Docker@2
+            inputs:
+              containerRegistry: 'docker'
+              repository: 'tweettrend'
+              command: 'buildAndPush'
+              Dockerfile: '**/Dockerfile'
+
           - task: CopyFiles@2
             inputs:
               SourceFolder: '$(System.DefaultWorkingDirectory)'
