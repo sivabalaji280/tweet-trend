@@ -40,6 +40,9 @@ stages:
               mavenAuthenticateFeed: false
               effectivePomSkip: false
               sonarQubeRunAnalysis: false
+          - task: SonarCloudAnalyze@2
+            inputs:
+              jdkversion: 'JAVA_HOME_17_X64'
           - task: SonarCloudPublish@2
             inputs:
               pollingTimeoutSec: '300'
