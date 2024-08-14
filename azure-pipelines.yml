@@ -29,6 +29,11 @@ stages:
                 # sonar.exclusions=**/*.bin
                 sonar.projectKey=sivabalaji280_tweettrend
                 sonar.projectName=tweettrend
+          - task: JavaToolInstaller@0
+            inputs:
+              versionSpec: '11'
+              jdkArchitectureOption: 'x64'
+              jdkSourceOption: 'PreInstalled'
           - task: Maven@4
             inputs:
               mavenPomFile: 'pom.xml'
