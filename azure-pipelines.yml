@@ -31,6 +31,16 @@ stages:
               SonarCloud: 'mysonarcloud'
               organization: 'mysonarcloud280'
               scannerMode: 'Other'
+              extraProperties: |
+                # Additional properties that will be passed to the scanner,
+                # Put one key=value per line, example:
+                # sonar.exclusions=**/*.bin
+                sonar.projectKey=sivabalaji280_tweettrend
+                sonar.projectName=tweettrend
+          - task: SonarCloudPublish@2
+            inputs:
+              pollingTimeoutSec: '300'
+          
 
         
            
